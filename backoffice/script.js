@@ -13,7 +13,7 @@ let autoCompleteMenu = async function(){
     
     // attente de la réponse à la requête demandant les données d'une collection de Lego
     let response = await fetch("../server/script.php?jour=" + jour.value + "&semaine=" + semaine.value);
-    // attente de l'extration des données en format json de la réponse à la requête
+    // attente de l'extraction des données en format json de la réponse à la requête
     let data = await response.json();
     
     if (data.length>0){
@@ -24,6 +24,7 @@ let autoCompleteMenu = async function(){
     }
     
   }
+
 
 /* V : la vue de l'application
   Objet dans lequel on placera les fonctions permettant de mettre à jour l'interface utilisateur
@@ -38,7 +39,6 @@ let V = {};
     La fonction pré-remplit le premier formulaire du backoffice avec les données de menu
 */
 V.updateForm = function( menu ){
-   
     // on récupère les champs du formulaire
     let input_entree = document.querySelector('input[name="entree"]');
     let input_plat = document.querySelector('input[name="plat"]');
@@ -47,5 +47,4 @@ V.updateForm = function( menu ){
     input_entree.value = menu.entree;
     input_plat.value = menu.plat;
     input_dessert.value = menu.dessert;
-
 }
