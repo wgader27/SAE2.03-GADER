@@ -4,7 +4,7 @@
 import { loadTemplate } from '../../js/utils.js';
 
 /* on charge le template du composant Menu */
-let template = await loadTemplate('./component/Menu/template.html');
+let template = await loadTemplate('./component/menu/template.html');
 
 /* on crée un objet Menu vide qui va symboliser notre composant */
 let Menu = {}; 
