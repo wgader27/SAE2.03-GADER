@@ -8,8 +8,6 @@ nav {
     margin-left:15rem;
     margin-top: 4rem;
     text-align: center;
-   
-    
 }
 
 nav h1 {
@@ -23,8 +21,8 @@ form {
     margin-top: 3em;
     display: flex;
     flex-direction: column;
-    
 }
+
 form select {
     font-size: medium;
     border-style: none;

@@ -1,12 +1,12 @@
 
-/*  lookupMenu
+/*  autoCompleteMenu
 
 
   La fonction demande au serveur les données au format JSON sur le menu du jour j.
   Quand les données sont reçues et lues, on les affiche avec la fonction V.updateForm.
 
 */
-let lookupMenu = async function(){
+let autoCompleteMenu = async function(){
     // on récupère les valeurs des champs d'identifiant semaine et jour
     let semaine = document.querySelector('#semaine');
     let jour = document.querySelector('#jour');
@@ -25,7 +25,9 @@ let lookupMenu = async function(){
     
   }
 
-// V : la vue de l'application
+/* V : la vue de l'application
+  Objet dans lequel on placera les fonctions permettant de mettre à jour l'interface utilisateur
+*/
 let V = {};
 
 
