@@ -9,7 +9,7 @@
         les menus de la semaine $s.
 */
 function getMenusByWeek($s){
-    $cnx = new PDO("mysql:host=localhost;dbname=mora", "root", "root");
+    $cnx = new PDO("mysql:host=localhost;dbname=morap01", "morap01", "morap01");
     $answer = $cnx->query("select * from Repas where semaine='$s'"); 
     $res = $answer->fetchAll(PDO::FETCH_OBJ);
     return $res;
@@ -25,7 +25,7 @@ function getMenusByWeek($s){
     le menu du jour $j de la semaine $s.
 */
 function getMenu($s, $j){
-    $cnx = new PDO("mysql:host=localhost;dbname=mora", "root", "root");
+    $cnx = new PDO("mysql:host=localhost;dbname=morap01", "morap01", "morap01");
     $answer = $cnx->query("select entree, plat, dessert from Repas where semaine='$s' and jour='$j'"); 
     $res = $answer->fetchAll(PDO::FETCH_OBJ);
     return $res;
@@ -45,7 +45,7 @@ function getMenu($s, $j){
     avec le nouveau menu donné en paramètre pour le jour $j de la semaine $s.
 */
 function updateMenu($s, $j, $e, $p, $d){
-    $cnx = new PDO("mysql:host=localhost;dbname=mora", "root", "root");
+    $cnx = new PDO("mysql:host=localhost;dbname=morap01", "morap01", "morap01");
     $answer = $cnx->query("replace into Repas set entree='$e', plat='$p', dessert='$d', semaine='$s', jour='$j'"); 
     $res = $answer->rowCount();
     return $res;
@@ -60,7 +60,7 @@ function updateMenu($s, $j, $e, $p, $d){
     La fonction deleteMenu se connecte à votre BDD et supprime le menu du jour $j de la semaine $s.
 */
 function deleteMenu($s, $j){
-    $cnx = new PDO("mysql:host=localhost;dbname=mora", "root", "root");
+    $cnx = new PDO("mysql:host=localhost;dbname=morap01", "morap01", "morap01");
     $answer = $cnx->query("delete from Repas where semaine='$s' and jour='$j'"); 
     $res = $answer->rowCount();
     return $res;
