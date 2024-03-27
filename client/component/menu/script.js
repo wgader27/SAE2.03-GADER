@@ -1,7 +1,7 @@
 /*  Composant Menu */
 
 /* on importe la fonction loadTemplate depuis le module /js/loader.js */
-import { loadTemplate } from '../../js/loader.js';
+import { loadTemplate } from '../../js/utils.js';
 
 /* on charge le template du composant Menu */
 let template = await loadTemplate('./component/Menu/template.html');
@@ -28,7 +28,7 @@ Menu.format =  function(obj) {
 
     Note : pour async et await, voir les explications dans le fichier js/loader.js
 
-    Note bis : Menu.render est donc capable d'afficher plusieurs composants Hero d'un coup si on lui fournit un tableau
+    Note bis : Menu.render est donc capable d'afficher plusieurs composants Menu d'un coup si on lui fournit un tableau
     d'objets, chaque objet contenant les données à injecter dans le template pour un composant Hero. C'est similaire à la
     fonction renderRecipes de l'exercice 6 sur les recettes de cuisine. Si j'ai besoin de rendre plusieurs composants Hero,
     et bien c'est possible. Et si je ne veux en afficher qu'un, c'est possible aussi, il suffira de fournir un tableau avec 
