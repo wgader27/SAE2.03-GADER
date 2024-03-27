@@ -4,7 +4,7 @@
   . paramètre j : le nom d'un jour de la semaine 
 
   La fonction demande au serveur les données au format JSON sur le menu du jour j.
-  Quand les données sont reçues et lues, on les affiche avec la fonction V.renderMenu.
+  Quand les données sont reçues et lues, on les affiche avec le composant Menu.
 
 */
 let requestMenu = async function(j){
@@ -23,7 +23,7 @@ let requestMenu = async function(j){
 /* requestMenusByWeek
 
   La fonction demande au serveur les données au format JSON sur les menus de la semaine.
-  Quand les données sont reçues et lues, on les affiche avec la fonction V.renderWeekMenus.
+  Quand les données sont reçues et lues, on les affiche avec le composant Menu.
 */
 let requestMenusByWeek = async function(){
     let weekMode = document.querySelector('.switch input');
