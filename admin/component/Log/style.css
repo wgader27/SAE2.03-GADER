@@ -1,0 +1,49 @@
+.Log {
+    display: flex;
+    align-items: flex-end;
+   
+    background-color: black;
+    width:30rem;  
+    height: 8rem;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-width: 1px;
+    padding-left:1.5rem; 
+    overflow: hidden;
+}
+
+.log ul {
+    overflow-y: scroll;
+    list-style-type: none;
+    padding: 0;
+    color: rgb(0, 188, 0);
+    font: courier;
+    font-size: smaller;
+}
+
+.Log .last{
+    
+    animation: fondu-en-entree 1s ease-in-out; /* Animation de 2 secondes */
+}
+
+@keyframes fondu-en-entree {
+from {
+    opacity: 0; /* Opacité initiale : invisible */
+}
+to {
+    opacity: 1; /* Opacité finale : visible */
+}
+}
+
+.clignotant {
+    animation: clignotement 2.5s infinite;
+  }
+  
+  @keyframes clignotement {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+
+

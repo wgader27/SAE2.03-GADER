@@ -2,7 +2,9 @@
 
 :root {
   --clr-dark: hsl(253, 69%, 8%);
-  --clr-white: hsl(0, 0%, 100%);
+  --clr-light: hsl(0, 0%, 100%);
 
   --ff-sans: "DM sans", sans-serif;
+
+  --char-index: 1;
 }
