@@ -1,21 +1,21 @@
 .navbar {
-    width: 100%;
-    height: 50px;
-    background-color: #333;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  color: var(--color-fg);
+  background-color: var(--color-bg);
 
-.navbar ul {
-    display: flex;
-    list-style: none;
-    flex-direction: row;
-    
-}
-.navbar__menu {
-   padding: 1em;
+  .navbar__item {
+    --_offset: 0.2rem;
+    padding: 0.5rem 1rem;
+    text-decoration: underline;
+    text-decoration-thickness: 0.1rem;
+    text-underline-offset: var(--_offset);
+    cursor: pointer;
+    transition: text-underline-offset 0.2s ease-in-out;
+    &:hover {
+      --_offset: 0.5rem;
+    }
+  }
 }
