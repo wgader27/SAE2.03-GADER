@@ -7,7 +7,7 @@ Via phpMyAdmin, importez le fichier SAE2_03.sql dans votre BDD sur mmi.unilim.fr
 Deux tables sont présentes, Movie et Category. Assurez-vous au préalable qu'il n'y a
 pas de conflit de nommage avec vos autres tables.
 
-### 2. Mise à jour des identifiants de connexions à la base de donnnées
+### 2. Mise à jour des identifiants de connexion à la base de donnnées
 Editez ensuite le fichier server/model.php pour changer les identifiants de connexion à la BDD
 
 ### 3. Vérification
