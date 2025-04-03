@@ -17,3 +17,19 @@ define("HOST", "localhost");
 define("DBNAME", "gader3");
 define("DBLOGIN", "gader3");
 define("DBPWD", "gader3");
+
+
+
+/**
+ * Récupère le film  dans la base de données.
+ *
+ * @return array 
+ */
+function getMovies(){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "select * from Movie";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res; 
+}

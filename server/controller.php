@@ -20,3 +20,10 @@
  */
 require("model.php");
 
+function readController(){
+    
+    $menu = getMovies();
+    return $menu;
+}
+
+

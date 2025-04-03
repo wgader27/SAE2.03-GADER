@@ -23,10 +23,11 @@ body{
     width: 11rem;
     border-radius: 10px;
     overflow: hidden;
-    margin:0;
+    margin: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-family: 'Nunito', sans-serif;
-    cursor:pointer;
+    cursor: pointer;
+    justify-content: flex-start;
 }
 
 .card:hover .card__image img {
@@ -47,17 +48,13 @@ body{
 }
 
 .card__content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 0.5rem;
     background: linear-gradient(60deg, #960EF3, #710EB4) !important;
-
 }
 
 .card__title{
     font-size: 0.9rem;
     text-align: center;
     color: #fff;
+    text-wrap: nowrap !important;
 }

@@ -10,10 +10,19 @@
   <body>
     <header id="header"></header>
 
-    <section id="content"></section>
+    <section id="content">
+
+      <div class="card__container" id="card__container"></div>
+
+    </section>
 
     <script type="module">
+      import {DataMovie} from './data/dataMovie.js';
+
       import { NavBar } from "./component/NavBar/script.js";
+
+      import { CardMovie } from "./component/CardMovie/script.js";
+
 
       // Controleur
       // Rappel, écrire window.C plutôt que let C est nécessaire pour tester depuis la console du navigateur
@@ -28,7 +37,18 @@
 
       C.start = function () {
         V.renderNavBar("C.handlerAbout()");
+        C.getMovie();
       };
+
+      C.getMovie = async function(){
+      let data = await DataMovie.request();
+      if (data.length == 0){
+        data = [
+          {film: 'Soon...', category: 'Soon...', img: 'Soon...'}
+        ];
+      }
+      V.renderCardMovie(data);
+    }
 
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
@@ -43,6 +63,11 @@
       V.renderNavBar = function (hAbout) {
         let header = document.querySelector("#header");
         header.innerHTML = NavBar.format(hAbout);
+      };
+
+      V.renderCardMovie = function (data) {
+        let cards = document.querySelector("#card__container");
+        cards.innerHTML = CardMovie.formatMany(data);
       };
 
       C.start(); // Démarre l'application
