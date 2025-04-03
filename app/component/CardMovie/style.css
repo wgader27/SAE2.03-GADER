@@ -3,6 +3,7 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: #0d0620;
 }
 
 
@@ -11,7 +12,7 @@ body{
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 1.5rem;
     margin-top: 2rem;
 }
 
