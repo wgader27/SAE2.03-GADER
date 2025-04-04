@@ -56,7 +56,7 @@ function addMovie($name, $year, $length, $description, $director, $id_category, 
     $stmt->bindParam(':image', $image);
     $stmt->bindParam(':trailer', $trailer);
     $stmt->bindParam(':min_age', $min_age);
-    $stmt->bindParam(':director', $w);
+    $stmt->bindParam(':director', $director);
     // Exécute la requête SQL
     $stmt->execute();
     // Récupère le nombre de lignes affectées par la requête

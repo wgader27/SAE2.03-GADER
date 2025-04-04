@@ -8,42 +8,44 @@
   </head>
   <body>
     <section id="log"></section>
-
-    <form method='GET' action="../server/script.php">
-            
-      <h2 class="form__title">Ajouter un film</h2>
-
-      <div class="form__content">
-        <input required type="text" name="title" placeholder="Saisir le titre du film">
-        <input required type="text" name="realisator" placeholder="Saisir le nom du réalisateur" pattern="[^0-9]*" title="Numbers are not allowed">
-        <input required type="number" name="year" placeholder="Saisir l'année de sortie" min="1900" max="2100">
-        <input required type="number" name="duration" placeholder="Saisir la durée en minutes" >
-        <textarea required name="description" placeholder="Saisissez la description du film"></textarea>
-        <input required type="text" name="image" placeholder="Saisir le nom du fichier image">
-        <input required type="text" name="trailer" placeholder="Saisir l'URL du trailer ">
-        <select required class="category__container" name="category" aria-placeholder="Sélectionner une catégorie">
-          <option value="" disabled selected>Sélectionner une catégorie</option>
-            <!-- Dynamic option -->
-        </select>
-        <input type="number" name="year" placeholder="Saisir l'âge requis" min="5" max="18">
-        <input type="submit" value="Ajouter le film" name="action">
-      </div>
-  </form>
-
+    <section id="form"></section>
 
 
 
 
     <script type="module">
       import { Log } from "./component/Log/script.js";
+      import { AddMovie } from "./component/AddMovie/script.js";
+      import { DataMovie } from "./data/dataMovie.js";
 
       window.C = {};
 
+      C.handlerAdd = async function(){
+            
+            // Sélectionne l'élément possédant la classe `.addMenu__form`
+            // il s'agit de l'élément <form> du composant NewMenuForm
+            let form = document.querySelector('.addMovie__form');
+
+            let fd = new FormData(form);
+            // Attend la réponse de la fonction `DataMenu.update(fd)`
+            let res = await DataMovie.addMovie(fd);
+            // Affiche le résultat de la mise à jour dans le journal
+            V.renderLog(res);
+        }
+
+
       C.start = function () {
         V.renderLog("Démarrage de l'application");
+        V.renderNewMovie("C.handlerAdd()");
+
       };
 
       window.V = {};
+
+      V.renderNewMovie = function(handler){
+            let content = document.querySelector('#form');
+            content.innerHTML = AddMovie.format(handler);
+        }
 
       V.renderLog = function (txt) {
         let content = document.querySelector("#log");

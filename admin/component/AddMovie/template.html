@@ -1,0 +1,47 @@
+<form class="addMovie__form">
+            
+    <h2 class="form__title">Ajouter un film</h2>
+
+    <div class="form__content">
+      <label for="">Titre du film</label>
+      <input required type="text" name="name" placeholder="Saisir le titre du film">
+
+      <label for="">Nom du réalisateur</label>
+      <input required type="text" name="director" placeholder="Saisir le nom du réalisateur" pattern="[^0-9]*" title="Numbers are not allowed">
+
+      <label for="">Année de sortie</label>
+      <input required type="number" name="year" placeholder="Saisir l'année de sortie" min="1900" max="2100">
+
+      <label for="">Durée en minutes</label>
+      <input required type="number" name="length" placeholder="Saisir la durée en minutes" >
+      
+      <label for="">Description du film</label>
+      <textarea required name="description" placeholder="Saisissez la description du film"></textarea>
+
+      <label for="">Nom du fichier image</label>
+      <input required type="text" name="image" placeholder="Saisir le nom du fichier image">
+
+      <label for="">URL du trailer</label>
+      <input required type="text" name="trailer" placeholder="Saisir l'URL du trailer ">
+
+      <label for="">Catégorie</label>
+      <select required class="category__container" name="id_category">
+        <option value="" disabled selected>Sélectionner une catégorie</option>
+        <option value="1">Action</option>
+        <option value="2">Comédie</option>
+        <option value="3">Drame</option>
+        <option value="4">Science-fiction</option>
+        <option value="5">Animation</option>
+        <option value="6">Thriller</option>
+        <option value="7">Horreur</option>
+        <option value="8">Aventure</option>
+        <option value="9">Fantaisie</option>
+        <option value="10">Documentaire</option>
+          <!-- Dynamic option -->
+      </select>
+
+      <label for="">Âge requis</label>
+      <input type="number" name="min_age" placeholder="Saisir l'âge requis" min="5" max="18">
+      <input onclick="{{handler}}" type="button" value="Ajouté film" name="todo">
+    </div>
+</form>
