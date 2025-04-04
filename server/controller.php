@@ -27,3 +27,28 @@ function readController(){
 }
 
 
+
+function addController(){
+    /* Lecture des données de formulaire
+      On ne vérifie pas si les données sont valides, on suppose (faudra pas toujours...) que le client les a déjà
+      vérifiées avant de les envoyer 
+    */
+    $name = $_REQUEST['name'];
+    $jour = $_REQUEST['year'];
+    $entree = $_REQUEST['length'];
+    $plat = $_REQUEST['description'];
+    $dessert = $_REQUEST['id_category'];
+    $image = $_REQUEST['image'];
+    $trailer = $_REQUEST['trailer'];
+    $min_age = $_REQUEST['min_age'];
+    // Appel de la fonction addMovie décrite dans model.php
+    $ok = addMovie($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age);
+    // $ok est le nombre de ligne affecté par l'opération d'insertion dans la BDD (voir model.php)
+    if ($ok!=0){
+      return "Le film $name a été ajouté";
+    }
+    else{
+      return false;
+    }
+  }
+
