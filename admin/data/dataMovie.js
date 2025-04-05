@@ -48,7 +48,7 @@ DataMovie.addMovie = async function (fdata) {
         method: "POST", // méthode HTTP à utiliser
         body: fdata // données à envoyer sous forme d'objet FormData
     };
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=addMovie", config);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=addmovies", config);
     let data = await answer.json();
     return data;
 }
@@ -59,7 +59,7 @@ DataMovie.deleteMovie = async function (fdata) {
         method: "POST", // méthode HTTP à utiliser
         body: fdata // données à envoyer sous forme d'objet FormData
     };
-    let answer = await fetch(HOST_URL + "/server/script.php?todo=deleteMovie", config);
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=deletemovies", config);
     let data = await answer.json();
     return data;
 

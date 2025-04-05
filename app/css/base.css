@@ -6,3 +6,10 @@
 
 @import "../component/NavBar/style.css" layer(components);
 @import "../component/CardMovie/style.css" layer(components);
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #0d0620;
+}

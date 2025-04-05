@@ -20,7 +20,7 @@
  */
 require("model.php");
 
-function readController(){
+function readMovieController(){
     
     $menu = getMovies();
     return $menu;
@@ -28,15 +28,7 @@ function readController(){
 
 
 
-function addController() {
-  // Vérifiez que tous les paramètres sont présents
-  $list_params = ['name', 'year', 'length', 'description', 'director', 'id_category', 'image', 'trailer', 'min_age'];
-  foreach ($list_params as $param) {
-      if (!isset($_REQUEST[$param])) {
-          error_log("Paramètre manquant: $param");
-          return false;
-      }
-  }
+function addMovieController() {
 
   // Récupérez les paramètres
   $name = $_REQUEST['name'];
@@ -55,8 +47,7 @@ function addController() {
   if ($ok != 0) {
       return "Le film $name a été ajouté";
   } else {
-      error_log("addMovie() failed");
-      return false;
+      return "Erreur lors de l'ajout du film $name<br>champs vides ou erreur de connexion à la BDD";
   }
 }
 

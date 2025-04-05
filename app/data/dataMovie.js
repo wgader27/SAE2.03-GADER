@@ -29,7 +29,7 @@ let DataMovie = {};
 
 DataMovie.request = async function () {
     try {
-      let answer = await fetch(HOST_URL + "/server/script.php?todo=read");
+      let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovies");
       if (!answer.ok) {
         throw new Error('Erreur lors de la récupération des données JSON');
       }

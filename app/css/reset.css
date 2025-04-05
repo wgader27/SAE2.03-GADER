@@ -1,11 +1,33 @@
+
 *,
 *::after,
 *::before {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
+* {
+  text-decoration: none;
+  color: inherit;
   list-style: none;
 }
+
+html {
+  scroll-behavior: smooth;
+  cursor: url(https://cdn.custom-cursor.com/db/20974/32/color-citrine-cursor.png), default !important;
+
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a,button {
+  text-decoration: none;
+  cursor: url(https://cdn.custom-cursor.com/db/20973/32/color-citrine-pointer.png), pointer !important;
+  
+}
+
