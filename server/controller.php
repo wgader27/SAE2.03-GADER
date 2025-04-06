@@ -27,6 +27,21 @@ function readMovieController(){
 }
 
 
+function readMovieDetailController() {
+    // Récupérez les paramètres
+    $id = $_REQUEST['id'];
+
+    // Appel de la fonction getMovieDetail
+    $movie = getMovieDetail($id);
+
+    if ($movie != 0) {
+        return $movie;
+    } else {
+        return "Erreur lors de la récupération du film avec l'ID $id";
+    }
+}
+
+
 
 function addMovieController() {
 

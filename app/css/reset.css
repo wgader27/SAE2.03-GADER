@@ -15,8 +15,6 @@
 
 html {
   scroll-behavior: smooth;
-  cursor: url(https://cdn.custom-cursor.com/db/20974/32/color-citrine-cursor.png), default !important;
-
 }
 
 img {
@@ -26,8 +24,6 @@ img {
 }
 
 a,button {
-  text-decoration: none;
-  cursor: url(https://cdn.custom-cursor.com/db/20973/32/color-citrine-pointer.png), pointer !important;
-  
+  text-decoration: none;  
 }
 

@@ -1,17 +1,23 @@
+
+#log{
+  width: 100%;
+}
+
 .log {
   display: flex;
   align-items: flex-end;
-  width: 30rem;
+  /* width: 30rem; */
   height: 8rem;
   padding: 1rem 1rem 1rem 1.5rem;
 
-  background-color: var(--color-bg);
+  background-color: var(--clr-black);
   border-style: solid;
   border-color: var(--color-fg);
   border-width: 1px;
+  border-radius: 0.5rem;
   overflow: hidden;
   .log__list {
-    font-size: smaller;
+    width: 100%;
     color: var(--color-accent);
     overflow-y: scroll;
     .last {

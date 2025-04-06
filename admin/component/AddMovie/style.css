@@ -1,0 +1,97 @@
+.addMovie__form{
+    background-color: var(--bg-form);
+    padding: 2rem;
+    gap: 2rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    gap: 2rem;
+    font-family: var(--ff-nunito);
+  }
+  
+  .form__group {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  /* Quand un seul élément sur toute la ligne */
+  .form__group--full {
+    grid-template-columns: 1fr;
+  }
+  
+  .input__container {
+    display: flex;
+    flex-direction: column;
+  
+    position: relative;
+  }
+  
+  @media (max-width: 768px) {
+    .form__group {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  
+  .input__container label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--clr-black);
+    margin-bottom: 0.5rem;
+  }
+  
+  .input__container input,
+  .input__container select,
+  .input__container textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--clr-black);
+    border-radius: 0.4rem;
+    font-family: var(--ff-nunito);
+    font-size: 1rem;
+    color: var(--clr-black);
+    background-color: var(--bg-input);
+    transition: border 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .input__container input:focus,
+  .input__container select:focus,
+  .input__container textarea:focus {
+    border-color: var(--clr-black);
+    outline: none;
+  }
+  
+  .category__container {
+    font-family: var(--ff-nunito);
+    background-color: var(--bg-input);
+    color: var(--clr-black);
+  }
+  
+  /* Bouton */
+  input[type="button"] {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.4rem;
+    font-family: var(--ff-nunito);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: var(--clr-black);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+   input[type="button"]:hover {
+    background-color: #333;
+    transform: scale(1.02);
+  }
+  

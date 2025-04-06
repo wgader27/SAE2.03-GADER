@@ -7,6 +7,9 @@ CardMovie.format = function (obj) {
   let html = template;
   html = html.replace("{{alt}}", obj.name);
 
+  let id = obj.id;
+  html = html.replace('<figure class="card', `<figure class="card font-sans flex-column" onclick="C.handlerDetail(${id})"`);
+
   if(obj.name.length > 20){
     html = html.replace("{{title}}", obj.name.substring(0, 20) + "...");
   }

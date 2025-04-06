@@ -56,9 +56,13 @@ if ( isset($_REQUEST['todo']) ){
       break;
 
       case 'addmovies':
-      // Lecture des données de formulaire 
         $data= addMovieController();
         break;
+
+      case 'readmoviedetail':
+        $data= readMovieDetailController();
+        break;
+
 
     default: // il y a un paramètre todo mais sa valeur n'est pas reconnue/supportée
       echo json_encode('[error] Unknown todo value');

@@ -35,6 +35,44 @@ function getMovies(){
 }
 
 
+function getMovieDetail($id){
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    // Requête SQL de mise à jour du menu avec des paramètres
+    $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, 
+    Movie.image, Movie.trailer, Movie.min_age, Category.name AS category
+    FROM Movie JOIN Category ON Movie.id_category = Category.id 
+    WHERE Movie.id= :id;";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Lie les paramètres aux valeurs
+    $stmt->bindParam(':id', $id);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Récupère le résultat
+    $res = $stmt->fetch(PDO::FETCH_OBJ); 
+    return $res; // Retourne le résultat
+}
+
+
+function getMovieByCategory($category){
+    if (empty($category)) {
+        return false; // Paramètre manquant
+    }
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    // Requête SQL de mise à jour du menu avec des paramètres
+    $sql = "SELECT * FROM Movie
+            JOIN Category on Movie.id_category = Category.id
+            WHERE Category.name = :category;";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':category', $category);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res; 
+}
+
+
 function addMovie($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age){
     // Vérification des paramètres
     if (empty($name) || empty($year) || empty($length) || empty($description) || empty($director) || empty($id_category) || empty($image) || empty($trailer) || empty($min_age)) {

@@ -28,18 +28,16 @@ let DataMovie = {};
 // }
 
 DataMovie.request = async function () {
-    try {
-      let answer = await fetch(HOST_URL + "/server/script.php?todo=readmovies");
-      if (!answer.ok) {
-        throw new Error('Erreur lors de la récupération des données JSON');
-      }
-      let data = await answer.json();
-      console.log("Données récupérées :", data); // Vérifiez les données dans la console
+      let response = await fetch(HOST_URL + "/server/script.php?todo=readmovies");
+      let data = await response.json();
       return data;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
+  };
+
+
+  DataMovie.requestMovieDetail = async function(id) {
+    let response = await fetch(HOST_URL + "/server/script.php?todo=readmoviedetail&id=" + id);
+    let data = await response.json();
+    return data;
   };
 
 /* C'EST QUOI async/await ?
