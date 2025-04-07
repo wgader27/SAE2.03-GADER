@@ -12,7 +12,7 @@
 
     <section id="content">
 
-      <div class="card__container flex-center flex-row flex-wrap" id="card__container"></div>
+      <div class="card__container flex-center flex-column flex-wrap" id="card__container"></div>
 
     </section>
 
@@ -21,6 +21,8 @@
       import { NavBar } from "./component/NavBar/script.js";
       import { CardMovie } from "./component/CardMovie/script.js";
       import { MovieDetail } from "./component/MovieDetail/script.js";
+      import { MovieCategory } from "./component/MovieCategory/script.js";
+
       
 
       // Controleur
@@ -48,7 +50,8 @@
 
       C.start = function () {
         V.renderNavBar("C.handlerAbout()");
-        C.getMovie();
+        // C.getMovie();
+        C.getMovieByCategories();
       };
 
       C.getMovie = async function(){
@@ -60,6 +63,14 @@
       }
       V.renderCardMovie(data);
     }
+
+
+    C.getMovieByCategories = async function(){
+      let categories = await DataMovie.requestCategory();
+      let html = await MovieCategory.formatMany(categories); 
+      V.renderMovieByCategories(html);
+    }
+
 
       // Vue (contient tout ce qui est relatif à l'affichage)
       window.V = {};
@@ -85,6 +96,12 @@
         let content = document.querySelector("#content");
         content.innerHTML = MovieDetail.format(movie);
       };
+
+      V.renderMovieByCategories = function (html) {
+        let cards = document.querySelector("#card__container");
+        cards.innerHTML = html;
+    };
+
 
 
       C.start(); // Démarre l'application

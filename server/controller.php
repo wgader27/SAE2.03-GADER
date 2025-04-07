@@ -41,6 +41,31 @@ function readMovieDetailController() {
     }
 }
 
+function readCategoriesController() {
+    // Appel de la fonction getCategories
+    $categories = getCategories();
+
+    if ($categories != 0) {
+        return $categories;
+    } else {
+        return "Erreur lors de la récupération des catégories";
+    }
+}
+
+function readMovieByCategoryController() {
+    // Récupérez les paramètres
+    $category = $_REQUEST['category'];
+
+    // Appel de la fonction getMovieByCategory
+    $movies = getMovieByCategory($category);
+
+    if ($movies != 0) {
+        return $movies;
+    } else {
+        return "Erreur lors de la récupération des films de la catégorie $category";
+    }
+}
+
 
 
 function addMovieController() {

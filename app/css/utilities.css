@@ -2,6 +2,10 @@
   font-family: var(--ff-sans);
 }
 
+.flex{
+  display: flex;
+}
+
 .flex-start {
   display: flex;
   justify-content: flex-start;

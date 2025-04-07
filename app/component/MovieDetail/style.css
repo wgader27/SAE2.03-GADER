@@ -1,7 +1,6 @@
 .detail {
     padding: 2rem;
-    background-color: #0e0620;
-    color: #fff;
+    color: var(--color-white);
   }
   
   .detail__video {
@@ -16,8 +15,8 @@
   
   .detail__container {
     display: flex;
-    gap: 2rem;
     align-items: flex-start;
+    gap: 2rem;
   }
   
   .detail__poster {
@@ -26,14 +25,12 @@
     border-radius: 1.5rem;
   }
   
-  .detail__infos {
-    flex: 1;
-  }
+
   
   .detail__title {
     font-size: 2rem;
     font-weight: bold;
-    color: #960EF3;
+    color: var(--color-primary);
     margin-bottom: 1rem;
   }
   

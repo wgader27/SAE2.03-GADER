@@ -40,7 +40,7 @@ function getMovieDetail($id){
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
     // Requête SQL de mise à jour du menu avec des paramètres
     $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, 
-    Movie.image, Movie.trailer, Movie.min_age, Category.name AS category
+    Movie.image, Movie.trailer, Movie.min_age, Category.id AS category_id ,Category.name AS category
     FROM Movie JOIN Category ON Movie.id_category = Category.id 
     WHERE Movie.id= :id;";
     // Prépare la requête SQL
@@ -55,15 +55,23 @@ function getMovieDetail($id){
 }
 
 
+function getCategories(){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT id, name AS category FROM Category";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res; 
+}
+
 function getMovieByCategory($category){
     if (empty($category)) {
-        return false; // Paramètre manquant
+        return false;
     }
-    // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
-    // Requête SQL de mise à jour du menu avec des paramètres
-    $sql = "SELECT * FROM Movie
-            JOIN Category on Movie.id_category = Category.id
+    $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, 
+            Movie.image, Movie.trailer, Movie.min_age, Category.id AS category_id ,Category.name AS category
+            FROM Movie JOIN Category ON Movie.id_category = Category.id 
             WHERE Category.name = :category;";
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(':category', $category);

@@ -9,12 +9,16 @@
   --color-gray-light: hsl(0, 0%, 80%);
   --color-gray: hsl(0, 0%, 50%);
   --color-gray-dark: hsl(0, 0%, 20%);
+  --color-purple:#960EF3;
+  --color-purple-dark:#710EB4;
+  --color-blue-dark:#0e0620;
+
   --ff-sans: "Nunito", sans-serif;
 
   /* Sementic Tokens */
   --color-fg: var(--color-white);
-  --color-bg: var(--color-gray-dark);
-
+  --color-bg: var(--color-blue-dark);
+  --color-primary: var(--color-purple);
 
   --card-bg: var(--color-white);
   --card-title: var(--color-white);

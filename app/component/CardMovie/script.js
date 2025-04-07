@@ -18,16 +18,16 @@ CardMovie.format = function (obj) {
   }
 
 
-  let imageName = obj.image;   
-  let imagePath = "../server/images/" + imageName;
+  let image = obj.image;   
+  let url = "../server/images/" + image;
   
   // On vérifie si l'image existe en utilisant un XMLHttpRequest simple
   let xhr = new XMLHttpRequest();
-  xhr.open('HEAD', imagePath, false); // false pour synchrone
+  xhr.open('HEAD', url, false); // false pour synchrone
   xhr.send();
   
   // Si l'image existe, on remplace par son nom, sinon par 'no_image.jpg'
-  html = html.replace("{{img}}", (xhr.status >= 200 && xhr.status < 300) ? imageName : "no_image.jpg");
+  html = html.replace("{{img}}", (xhr.status >= 200 && xhr.status < 300) ? image : "no_image.jpg");
   return html;  
 } 
 
