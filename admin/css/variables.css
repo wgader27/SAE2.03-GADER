@@ -10,18 +10,34 @@
   --color-gray: hsl(0, 0%, 50%);
   --color-gray-dark: hsl(0, 0%, 20%);
   --color-green: hsl(120, 100%, 37%);
+  --color-purple:#960EF3;
+  --color-purple-dark:#710EB4;
+  --color-blue-dark:#0e0620;
 
   --ff-sans: "DM sans", sans-serif;
   --ff-nunito: "Nunito", sans-serif;
 
   
   /* Sementic Tokens */
-  --color-fg: var(--color-gray-dark);
-  --color-bg: var(--color-gray-dark);
+  --color-fg: var(--color-white);
+  --color-bg: var(--color-blue-dark);
   --color-accent: var(--color-green);
+  --color-primary: var(--color-purple);
+
+  --card-bg: var(--color-white);
+  --card-title: var(--color-white);
+
 
   --bg-form:var(--color-white);
   --bg-input: var(--color-white);
 
   --ff-primary:var(--ff-nunito);
+
+
+
+
+
+
+  /* Sementic Tokens */
+
 }

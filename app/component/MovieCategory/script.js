@@ -21,7 +21,12 @@ MovieCategory.formatMany = async function(categories){
     let html = "";
     for (const obj of categories) {
       const movies = await DataMovie.requestMovieByCategory(obj.category);
-      html += MovieCategory.format(obj.category, movies);
+      if (movies.length === 0) {
+        continue;
+      }
+      else{
+          html += MovieCategory.format(obj.category, movies);
+      }
     }
     return html;
   };

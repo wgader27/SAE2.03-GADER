@@ -1,0 +1,38 @@
+<form class="addUser__form">
+  <h2 class="form__title">Ajouter un utilisateur</h2>
+
+  <div class="form">
+
+    <div class="form__group form__group--full">
+      <div class="input__container">
+        <label for="name">Nom de l'utilisateur</label>
+        <input required type="text" name="name" placeholder="Julien.B" pattern="[^0-9]*" title="Numbers are not allowed">
+      </div>
+    </div>
+    <div class="form__group form__group--full">
+      <div class="input__container">
+        <label for="image">Image</label>
+        <input type="text" name="image" placeholder="no_user.jpg">
+      </div>
+    </div>
+
+    <div class="form__group form__group--full">
+      <div class="input__container">
+        <label for="age_limit">Restriction âge</label>
+        <input required type="number" name="age_limit" placeholder="0 = Tout public, 18 = Adultes" min="0" max="18"> <!-- 0 pour tout public !-->
+      </div>
+    </div>
+
+    <div class="form__group">
+      <div class="input__container">
+        <label for="length">Durée en minutes</label>
+        <input required type="number" name="length" placeholder="180" min="1" max="300">
+      </div>
+    </div>
+
+    <div class="form__group form__group--full">
+      <input onclick="{{handlerUser}}" class="user__button" type="button" value="Ajouté un utilisateur" name="todo">
+    </div>
+
+  </div>
+</form>

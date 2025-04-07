@@ -109,3 +109,26 @@ function addMovie($name, $year, $length, $description, $director, $id_category, 
     $res = $stmt->rowCount(); 
     return $res; // Retourne le nombre de lignes affectées
 }
+
+
+function addUser($name, $image, $age_limit){
+    if (empty($name) || empty($image) || empty($age_limit)) {
+        return false; 
+    }
+
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+
+    $sql = "INSERT INTO User (name,image,age_limit) 
+            VALUES (:name,:image,:age_limit)";
+
+    $stmt = $cnx->prepare($sql);
+    // Lie les paramètres aux valeurs
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':image', $image);
+    $stmt->bindParam(':age_limit', $age_limit);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Récupère le nombre de lignes affectées par la requête
+    $res = $stmt->rowCount(); 
+    return $res; // Retourne le nombre de lignes affectées
+}

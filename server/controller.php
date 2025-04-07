@@ -91,3 +91,21 @@ function addMovieController() {
   }
 }
 
+function addUserController() {
+  // Récupérez les paramètres
+  $name = $_REQUEST['name'];
+  $image = $_REQUEST['image'];
+  $age_limit = $_REQUEST['age_limit'];
+
+
+  // Appel de la fonction addUser
+  $ok = addUser($name, $image, $age_limit);
+  if ($ok != 0) {
+      return "L'utilisateur $name a été ajouté";
+  } 
+  else {
+      return "Erreur lors de l'ajout de l'utilisateur $name<br>champs vides ou erreur de connexion à la BDD";
+  }
+
+}
+

@@ -20,5 +20,6 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 1.5rem;
+    overflow-x: auto;
   }
   

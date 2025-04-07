@@ -6,6 +6,8 @@
 
 @import "../component/Log/style.css" layer(components);
 @import "../component/AddMovie/style.css" layer(components);
+@import "../component/AddUser/style.css" layer(components);
+
 
 
 
@@ -14,4 +16,14 @@
     background-color: var(--color-bg);
     padding: 0rem 2rem;
     gap: 2rem;
+  }
+
+  #form{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    font-family: var(--ff-nunito);
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: flex-start;
   }

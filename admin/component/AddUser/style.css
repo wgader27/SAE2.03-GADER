@@ -1,4 +1,4 @@
-.addMovie__form{
+.addUser__form{
     background-color: var(--bg-form);
     padding: 2rem;
     gap: 2rem;
@@ -12,6 +12,7 @@
     position: relative;
     width: 100%;
     gap: 2rem;
+    margin-top: 2rem;
     font-family: var(--ff-nunito);
   }
   
@@ -75,7 +76,7 @@
   }
   
   /* Bouton */
-  .movie__button {
+  .user__button {
     width: 100%;
     padding: 1rem;
     border: none;
@@ -85,13 +86,14 @@
     font-weight: bold;
     text-transform: uppercase;
     color: white;
-    background-color: var(--clr-black);
+    background-color: var(--color-primary);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
-   .movie__button:hover {
-    background-color: #333;
+   .user__button:hover {
+    background-color: var(--color-primary);
     transform: scale(1.02);
   }
+
   

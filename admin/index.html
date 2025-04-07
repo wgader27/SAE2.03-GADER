@@ -15,6 +15,7 @@
     <script type="module">
       import { Log } from "./component/Log/script.js";
       import { AddMovie } from "./component/AddMovie/script.js";
+      import { AddUser } from "./component/AddUser/script.js";
       import { DataMovie } from "./data/dataMovie.js";
 
       window.C = {};
@@ -32,10 +33,23 @@
             V.renderLog(res);
         }
 
+        C.handlerAddUser = async function(){
+            
+            // Sélectionne l'élément possédant la classe `.addMenu__form`
+            // il s'agit de l'élément <form> du composant NewMenuForm
+            let form = document.querySelector('.addUser__form');
+
+            let fd = new FormData(form);
+            // Attend la réponse de la fonction `DataMenu.update(fd)`
+            let res = await DataMovie.addUser(fd);
+            // Affiche le résultat de la mise à jour dans le journal
+            V.renderLog(res);
+        }
 
       C.start = function () {
         V.renderLog("Démarrage de l'application");
         V.renderNewMovie("C.handlerAdd()");
+        V.renderNewUser("C.handlerAddUser()");
 
       };
 
@@ -44,6 +58,11 @@
       V.renderNewMovie = function(handler){
             let content = document.querySelector('#form');
             content.innerHTML = AddMovie.format(handler);
+        }
+
+        V.renderNewUser = function(handler){
+            let content = document.querySelector('#form');
+            content.innerHTML += AddUser.format(handler);
         }
 
       V.renderLog = function (txt) {
