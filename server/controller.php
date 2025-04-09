@@ -28,10 +28,8 @@ function readMovieController(){
 
 
 function readMovieDetailController() {
-    // Récupérez les paramètres
     $id = $_REQUEST['id'];
 
-    // Appel de la fonction getMovieDetail
     $movie = getMovieDetail($id);
 
     if ($movie != 0) {
@@ -42,7 +40,6 @@ function readMovieDetailController() {
 }
 
 function readCategoriesController() {
-    // Appel de la fonction getCategories
     $categories = getCategories();
 
     if ($categories != 0) {
@@ -53,17 +50,10 @@ function readCategoriesController() {
 }
 
 function readMovieByCategoryController() {
-    // Récupérez les paramètres
     $category = $_REQUEST['category'];
-
-    // Appel de la fonction getMovieByCategory
+    
     $movies = getMovieByCategory($category);
-
-    if ($movies != 0) {
-        return $movies;
-    } else {
-        return "Erreur lors de la récupération des films de la catégorie $category";
-    }
+    return $movies;
 }
 
 
@@ -95,17 +85,34 @@ function addUserController() {
   // Récupérez les paramètres
   $name = $_REQUEST['name'];
   $image = $_REQUEST['image'];
-  $age_limit = $_REQUEST['age_limit'];
-
+  $birth = $_REQUEST['birth'];
 
   // Appel de la fonction addUser
-  $ok = addUser($name, $image, $age_limit);
+  $ok = addUser($name, $image, $birth);
   if ($ok != 0) {
       return "L'utilisateur $name a été ajouté";
   } 
   else {
       return "Erreur lors de l'ajout de l'utilisateur $name<br>champs vides ou erreur de connexion à la BDD";
   }
-
 }
 
+function readUserDetailController() {
+    $id = $_REQUEST['id'];
+    $user = getUserById($id);
+
+    if ($user != 0) {
+        return $user;
+    } else {
+        return "Erreur lors de la récupération de l'utilisateur avec l'ID $id";
+    }
+}
+function readUsersController() {
+    $users = getUsers();
+
+    if ($users != 0) {
+        return $users;
+    } else {
+        return "Erreur lors de la récupération des utilisateurs";
+    }
+}

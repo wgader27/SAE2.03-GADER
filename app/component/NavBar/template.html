@@ -2,6 +2,18 @@
   <ul class="navbar__list">
     <li class="navbar__item" onclick="location.reload();"><i class="fa-solid fa-house"></i>Home</li>
     <li class="navbar__item" onclick="{{hAbout}}">About</li>
-
   </ul>
 </nav>
+
+
+<div class="navbar__user">
+  <span class="navbar__user--name">{{currentUser}}</span>
+  <div class="navbar__image">
+    <img src="https://api.dicebear.com/9.x/initials/svg?seed={{currentUserImage}}" alt="User Image">
+  </div>
+  <div class="dropdown">
+    <ul>
+      {{profils}}
+    </ul>
+  </div>
+</div>

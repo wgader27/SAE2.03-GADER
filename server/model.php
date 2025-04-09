@@ -66,7 +66,7 @@ function getCategories(){
 
 function getMovieByCategory($category){
     if (empty($category)) {
-        return false;
+        return [];
     }
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     $sql = "SELECT Movie.id, Movie.name, Movie.year, Movie.length, Movie.description, Movie.director, 
@@ -111,24 +111,45 @@ function addMovie($name, $year, $length, $description, $director, $id_category, 
 }
 
 
-function addUser($name, $image, $age_limit){
-    if (empty($name) || empty($image) || empty($age_limit)) {
+function addUser($name, $image, $birth){
+    if (empty($name) || empty($image) || empty($birth)) {
         return false; 
     }
 
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
 
-    $sql = "INSERT INTO User (name,image,age_limit) 
-            VALUES (:name,:image,:age_limit)";
+    $sql = "INSERT INTO User (name,image,birth) 
+            VALUES (:name,:image,:birth)";
 
     $stmt = $cnx->prepare($sql);
     // Lie les paramètres aux valeurs
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':image', $image);
-    $stmt->bindParam(':age_limit', $age_limit);
+    $stmt->bindParam(':birth', $birth);
     // Exécute la requête SQL
     $stmt->execute();
     // Récupère le nombre de lignes affectées par la requête
     $res = $stmt->rowCount(); 
     return $res; // Retourne le nombre de lignes affectées
+}
+
+function getUserById($id){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    $sql = "SELECT User.id, User.name, User.image, User.birth
+    FROM User 
+    WHERE User.id= :id;";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $res = $stmt->fetch(PDO::FETCH_OBJ); 
+    return $res;
+}
+
+function getUsers(){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "SELECT * FROM User";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res; 
 }

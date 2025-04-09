@@ -13,7 +13,10 @@ MovieDetail.format = function (movie) {
   html = html.replace("{{director}}", movie.director);
   html = html.replace("{{year}}", movie.year);
   html = html.replace("{{category}}", movie.category);
-  html = html.replace("{{min_age}}", movie.min_age);
+  if(movie.min_age == 0){
+    html = html.replace("{{min_age}}", "Tous publics");
+  }
+  html = html.replace("{{min_age}}", "+ "+movie.min_age);
   html = html.replace("{{description}}", movie.description);
 
   // Format YouTube URL for embed

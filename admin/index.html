@@ -17,6 +17,7 @@
       import { AddMovie } from "./component/AddMovie/script.js";
       import { AddUser } from "./component/AddUser/script.js";
       import { DataMovie } from "./data/dataMovie.js";
+      import { DataProfil } from "./data/dataProfil.js";
 
       window.C = {};
 
@@ -41,7 +42,7 @@
 
             let fd = new FormData(form);
             // Attend la réponse de la fonction `DataMenu.update(fd)`
-            let res = await DataMovie.addUser(fd);
+            let res = await DataProfil.addUser(fd);
             // Affiche le résultat de la mise à jour dans le journal
             V.renderLog(res);
         }

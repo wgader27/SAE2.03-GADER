@@ -17,19 +17,18 @@ MovieCategory.format = function (category, movies) {
   return html;
 };
 
-MovieCategory.formatMany = async function(categories){
-    let html = "";
-    for (const obj of categories) {
-      const movies = await DataMovie.requestMovieByCategory(obj.category);
-      if (movies.length === 0) {
-        continue;
+MovieCategory.formatMany = async function(categories) {
+  let html = "";
+  
+  for (let category of categories) {
+      let movies = await DataMovie.requestMoviesByCategory(category.category);
+      if (movies && movies.length > 0) {
+          html += MovieCategory.format(category.category, movies);
       }
-      else{
-          html += MovieCategory.format(obj.category, movies);
-      }
-    }
-    return html;
-  };
+  }
+  
+  return html;
+}
   
 
 export { MovieCategory };

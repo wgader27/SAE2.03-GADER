@@ -39,5 +39,4 @@ CardMovie.formatMany = function(movies){
   return html;
 }
 
-
 export { CardMovie };

@@ -52,3 +52,9 @@
     font-weight: 600;
   }
   
+
+  .detail__views {
+    color: white;
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
