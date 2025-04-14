@@ -1,0 +1,20 @@
+.no-result {
+    width: 100%;
+    padding: 3rem;
+    text-align: center;
+    background: var(--color-bg-secondary);
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.no-result i {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.no-result__message {
+    font-family: var(--ff-sans);
+    font-size: 1.2rem;
+    color: var(--color-white);
+}

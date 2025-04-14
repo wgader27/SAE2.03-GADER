@@ -1,3 +1,6 @@
+import { DataProfil } from "../../data/dataProfil";
+// import { CommentSection } from '../CommentSection/script.js';
+
 let templateFile = await fetch('./component/MovieDetail/template.html');
 let template = await templateFile.text();
 
@@ -25,6 +28,11 @@ MovieDetail.format = function (movie) {
     trailer = trailer.replace("watch?v=", "embed/");
   }
   html = html.replace("{{trailer}}", trailer);
+
+  // const comments = await C.getMovieComments(movie.id);
+  // const commentSection = await CommentSection.format(comments, movie.id);
+  // html = html.replace('{{comments}}', commentSection);
+
 
   return html;
 };

@@ -13,6 +13,8 @@
   --color-purple-dark:#710EB4;
   --color-blue-dark:#0e0620;
 
+  --color-error: hsla(0, 100%, 50%, 0.952);
+
   --ff-sans: "Nunito", sans-serif;
 
   /* Sementic Tokens */

@@ -1,4 +1,4 @@
-
+import {DataProfil} from "./dataProfil.js";
 // URL où se trouve le répertoire "server" sur mmi.unilim.fr
 let HOST_URL = "https://mmi.unilim.fr/~gader3/SAE2.03-GADER/";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
@@ -41,7 +41,8 @@ DataMovie.request = async function () {
   };
 
   DataMovie.requestMoviesByCategory = async function(category) {
-    let response = await fetch(HOST_URL+"/server/script.php?todo=readmoviesbycategory&category="+category);
+    const userAge = DataProfil.getUserAge();
+    let response = await fetch(HOST_URL+"/server/script.php?todo=readmoviesbycategory&category="+category+"&userAge="+userAge);
     let data = await response.json();
     return data;
 }
@@ -51,6 +52,12 @@ DataMovie.request = async function () {
     let data = await response.json();
     return data;
   }
+
+  DataMovie.getFeaturedMovies = async function() {
+    const response = await fetch(HOST_URL + "/server/script.php?todo=getfeatured");
+    const data = await response.json();
+    return data;
+};
 
 
 /* C'EST QUOI async/await ?

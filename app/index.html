@@ -6,15 +6,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 
 <body>
-  <header id="header">
-
-  </header>
-  <section id="content">
-    <div class="card__container flex-center flex-column flex-wrap" id="card__container"></div>
-  </section>
+  <header id="header"></header>
+  <section id="content"></section>
 
   <script type="module">
     import { DataMovie } from './data/dataMovie.js';
@@ -23,6 +22,10 @@
     import { MovieDetail } from "./component/MovieDetail/script.js";
     import { MovieCategory } from "./component/MovieCategory/script.js";
     import { DataProfil } from './data/dataProfil.js';
+    import { NoResultCard } from "./component/NoResultCard/script.js";
+    import { BookmarkResult } from "./component/BookmarkResult/script.js";
+    import { FeaturedMovie } from './component/FeaturedMovie/script.js';
+
 
 
     // Controleur
@@ -30,18 +33,163 @@
     // Une fois l'application terminée, on pourrait remettre let C.
     window.C = {};
 
-    C.handlerAbout = function () {
-      alert(
-        "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
-      );
+    C.handleFavorite = async function(movieId) {
+    if (DataProfil.currentUserId === "guest") {
+        Toastify({
+            text: `<i class="fas fa-user-lock"></i> Veuillez vous connecter pour gérer vos favoris`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "toast-warning",
+            close: true,
+            escapeMarkup: false,
+            style: {
+                background: "#ff9800",
+                color: "#ffffff",
+                padding: "10px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontFamily: "var(--ff-sans)",
+            }
+        }).showToast();
+        return;
+    }
+
+    const heartBtn = document.querySelector(`[data-movie-id="${movieId}"] .card__favorite i`);
+    const isCurrentlyFavorite = heartBtn.classList.contains('fas');
+    const response = await DataProfil.addBookmark(movieId);
+    
+    if (response.success) {
+        // Change l'icône
+        if (!isCurrentlyFavorite) {
+            heartBtn.classList.replace('far', 'fas');
+            heartBtn.parentElement.classList.add('is-favorite');
+            
+            Toastify({
+                text: `<i class="fas fa-heart"></i> Film ajouté aux favoris`,
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                className: "toast-success",
+                close: true,
+                escapeMarkup: false,
+                style: {
+                    background: "#4caf50",
+                    color: "#ffffff",
+                    padding: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "10px",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    fontFamily: "var(--ff-sans)",
+                }
+            }).showToast();
+        } else {
+            heartBtn.classList.replace('fas', 'far');
+            heartBtn.parentElement.classList.remove('is-favorite');
+            
+            Toastify({
+                text: `<i class="fas fa-heart-broken"></i> Film retiré des favoris`,
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                className: "toast-info",
+                close: true,
+                escapeMarkup: false,
+                style: {
+                    background: "#f44336",
+                    color: "#ffffff",
+                    padding: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "10px",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    fontFamily: "var(--ff-sans)",
+                }
+            }).showToast();
+        }
+    }  else {
+    // Gestion de l'erreur
+    Toastify({
+        text: `<i class="fas fa-exclamation-triangle"></i> ${response.message}`,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        className: "toast-error",
+        close: true,
+        escapeMarkup: false,
+        style: {
+            background: "hsla(0, 100%, 50%, 0.952)", 
+            color: "#ffffff",
+            padding: "10px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            borderRadius: "5px",
+            fontSize: "16px",
+            fontFamily: "var(--ff-sans)",
+        }
+    }).showToast();
+  }
+};
+
+    C.handleRemoveBookmark = async function (movieId) {
+      const response = await DataProfil.deleteBookmark(movieId);
+
+      if (response.success) {
+        // Supprimer visuellement la carte avec animation
+        const card = document.querySelector(`[data-movie-id="${movieId}"]`);
+        card.style.animation = 'fadeOut 0.3s ease';
+
+        Toastify({
+            text: `<i class="fas fa-heart-broken"></i> Film retiré des favoris`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "toast-info",
+            close: true,
+            escapeMarkup: false,
+            style: {
+                background: "#f44336", // Rouge pour la suppression
+                color: "#ffffff",
+                padding: "10px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontFamily: "var(--ff-sans)",
+            }
+        }).showToast();
+
+        // Attendre la fin de l'animation puis supprimer la carte
+        setTimeout(async () => {
+          card.remove();
+
+          // Recharger la page des favoris si nécessaire
+          const remainingCards = document.querySelectorAll('.card').length;
+          if (remainingCards === 0) {
+            V.norenderBookmark("Aucun favori trouvé");
+          }
+        }, 300);
+      }
     };
 
-    C.handleUserSelect = async function (userId, userName) {
-      await DataProfil.selectUser(userId, userName);
+    C.handleUserSelect = async function (userId, userName, userImage) {
+      await DataProfil.selectUser(userId, userName, userImage);
       V.renderNavBar("C.handlerAbout()");
       C.getMovieByCategories();
     }
-
 
     C.handlerDetail = async function (id) {
       let movie = await DataMovie.requestMovieDetail(id);
@@ -54,12 +202,52 @@
       V.renderMovieDetail(movie);
     };
 
+    C.handlerHome = function () {
+      C.getMovieByCategories();
+    };
+
     C.start = function () {
       V.renderNavBar("C.handlerAbout()");
       // C.getMovie();
       C.getMovieByCategories();
     };
 
+    C.getFavorites = async function() {
+    if (DataProfil.currentUserId === "guest") {
+      Toastify({
+            text: `<i class="fas fa-user-lock"></i> Veuillez vous connecter pour gérer vos favoris`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "toast-warning",
+            close: true,
+            escapeMarkup: false,
+            style: {
+                background: "#ff9800",
+                color: "#ffffff",
+                padding: "10px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontFamily: "var(--ff-sans)",
+            }
+        }).showToast();
+ 
+        return;
+    }
+
+    const movies = await DataProfil.getBookmarks();
+    if (movies.message) {
+        // Si aucun favori n'est trouvé
+        V.norenderBookmark("Aucun favori trouvé");
+    } else {
+        // Si des favoris sont trouvés
+        V.renderBookmarkResult(movies);
+    }
+};
     C.getMovie = async function () {
       let data = await DataMovie.request();
       if (data.length == 0) {
@@ -72,33 +260,20 @@
 
 
     C.getMovieByCategories = async function () {
+    // Récupérer les films mis en avant
+    const featuredMovies = await DataMovie.getFeaturedMovies();
+    const featuredHTML = await FeaturedMovie.format(featuredMovies);
+    
+    // Ensuite récupérer les catégories
     let categories = await DataMovie.requestCategory();
-    let html = await MovieCategory.formatMany(categories);
-    V.renderMovieByCategories(html);
-}
+    let categoriesHTML = await MovieCategory.formatMany(categories);
+    
+    // Afficher les deux sections
+    V.renderMovieByCategories(featuredHTML + categoriesHTML);
+};
 
-    let calculateAge = function (birthdate) {
-      const birth = new Date(birthdate);
-      const today = new Date();
-      let age = today.getFullYear() - birth.getFullYear();
-      const monthdiff = today.getMonth() - birth.getMonth();
-
-      if (monthdiff < 0 || (monthdiff === 0 && today.getDate() < birth.getDate())) {
-        age--;
-      }
-      return age;
-    }
-
-    // Vue (contient tout ce qui est relatif à l'affichage)
     window.V = {};
 
-    /**
-     * V.renderNavBar
-     *
-     * Cette fonction est responsable de l'affichage de la barre de navigation (NavBar).
-     * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
-     * formaté par le composant NavBar.
-     */
     V.renderNavBar = async function (hAbout) {
       let header = document.querySelector("#header");
       header.innerHTML = await NavBar.format(hAbout);
@@ -116,12 +291,64 @@
     };
 
     V.renderMovieByCategories = function (html) {
-      let cards = document.querySelector("#card__container");
-      cards.innerHTML = html;
+      let cards = document.querySelector("#content");
+      cards.innerHTML =
+        `<div class='card__container flex-column flex-wrap' id='card__container'>
+        ${html}
+      </div>;`;
     };
 
-    C.start(); // Démarre l'application
+    V.renderBookmarkResult = async function (movies) {
+      const content = document.querySelector("#content");
+      content.innerHTML = await BookmarkResult.format(movies);
+    };
+
+
+    V.norenderBookmark = function (message) {
+      const content = document.querySelector("#content");
+      content.innerHTML = NoResultCard.format(message);
+
+      Toastify({
+        text: `<i class="fas fa-info-circle"></i> ${message}`,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        className: "toast-info",
+        close: true,
+        escapeMarkup: false,
+        style: {
+          background: "#960EF3",
+          color: "#ffffff", 
+          padding: "10px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px", 
+          borderRadius: "5px",
+          color: "#fff",
+          fontSize: "16px",
+          fontFamily: "var(--ff-sans)",
+        },
+      }).showToast();
+    };
+
+    V.showToast = function (message, type = "info") {
+      Toastify({
+        text: message,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        className: `toast-${type}`,
+        style: {
+          background: type === "success" ? "var(--color-success)" : "var(--color-error)"
+        }
+      }).showToast();
+    };
+
+
+    C.start();
   </script>
+
 </body>
 
 </html>

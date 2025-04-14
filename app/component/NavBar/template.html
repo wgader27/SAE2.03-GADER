@@ -1,7 +1,10 @@
 <nav class="navbar font-sans">
+  <div class="navbar__logo">
+    <img src="../server/images/logo.png" alt="Logo">
+  </div>
   <ul class="navbar__list">
-    <li class="navbar__item" onclick="location.reload();"><i class="fa-solid fa-house"></i>Home</li>
-    <li class="navbar__item" onclick="{{hAbout}}">About</li>
+    <li class="navbar__item" onclick="C.handlerHome();"><i class="fa-solid fa-house"></i>Home</li>
+    <li class="navbar__item" onclick="C.getFavorites()"><i class="fa-solid fa-heart"></i>Mes favoris</li>
   </ul>
 </nav>
 
@@ -9,7 +12,7 @@
 <div class="navbar__user">
   <span class="navbar__user--name">{{currentUser}}</span>
   <div class="navbar__image">
-    <img src="https://api.dicebear.com/9.x/initials/svg?seed={{currentUserImage}}" alt="User Image">
+    {{userImage}}
   </div>
   <div class="dropdown">
     <ul>

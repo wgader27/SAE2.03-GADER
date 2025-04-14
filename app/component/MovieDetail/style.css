@@ -58,3 +58,41 @@
     font-weight: bold;
     margin-right: 0.5rem;
   }
+
+
+  @media (max-width: 30rem) {
+    .detail {
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 1rem;
+      gap: 3rem;
+    }
+
+    .detail__container {
+      flex-direction: column;
+      justify-content: center;
+
+    }
+  
+    .detail__poster {
+      width: 100%;
+      max-width: 20rem;
+    }
+  
+    .detail__video-frame {
+      height: 15rem;
+    }
+  
+    .detail__title {
+      font-size: 1.5rem;
+    }
+  
+    .detail__meta {
+      font-size: 0.9rem;
+    }
+  
+    .detail__description {
+      font-size: 0.9rem;
+    }
+    
+  }

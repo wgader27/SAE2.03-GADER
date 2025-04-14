@@ -1,0 +1,17 @@
+.bookmark{
+    padding: 4rem 1rem ;
+}
+
+.bookmark__title {
+    font-size: 2rem;
+    color: var(--color-white);
+    margin-bottom: 2rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+.bookmark__container {
+    gap: 2rem;
+}
