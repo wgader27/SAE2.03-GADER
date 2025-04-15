@@ -1,6 +1,6 @@
 import {DataProfil} from "./dataProfil.js";
 // URL où se trouve le répertoire "server" sur mmi.unilim.fr
-let HOST_URL = "https://mmi.unilim.fr/~gader3/SAE2.03-GADER/";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
+let HOST_URL = "https://mmi.unilim.fr/~gader3/SAE2.03-GADER";//"http://mmi.unilim.fr/~????"; // CHANGE THIS TO MATCH YOUR CONFIG
 
 let DataMovie = {};
 
@@ -59,6 +59,14 @@ DataMovie.request = async function () {
     return data;
 };
 
+
+DataMovie.search = async function (query) {
+  console.log("Recherche envoyée:", query);
+  console.log("Recherche envoyée:", encodeURIComponent(query));
+  let response = await fetch(HOST_URL + "/server/script.php?todo=search&query=" + encodeURIComponent(query));
+  let data = await response.json();
+  return data;
+};
 
 /* C'EST QUOI async/await ?
     

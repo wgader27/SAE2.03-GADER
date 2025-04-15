@@ -29,7 +29,7 @@ MovieCategory.formatMany = async function(categories) {
           html += await MovieCategory.format(category);
       }
   }
-  if(cpt === 0) {
+  if(cpt == 0) {
     html = NoResultCard.format("Aucun résultat trouvé");
   }
   return html;

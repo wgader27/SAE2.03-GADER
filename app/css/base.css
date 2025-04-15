@@ -11,6 +11,7 @@
 @import "../component/NoResultCard/style.css" layer(components);
 @import "../component/BookmarkResult/style.css" layer(components); 
 @import "../component/FeaturedMovie/style.css" layer(components);  
+@import "../component/SearchBar/style.css" layer(components);
 
 
 

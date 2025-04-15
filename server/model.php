@@ -238,3 +238,16 @@ function getFeaturedMovies()
         return [];
     }
 }
+
+function searchMovies($query)
+{
+    $query = trim($query);
+    $cnx = new PDO('mysql:host='.HOST.';dbname='.DBNAME, DBLOGIN, DBPWD);
+    $sql = 'SELECT * FROM Movie WHERE LOWER(name) LIKE LOWER(:query)';
+    $stmt = $cnx->prepare($sql);
+    $like = "%$query%";
+    $stmt->bindParam(':query', $like);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}

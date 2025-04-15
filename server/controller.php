@@ -217,3 +217,18 @@ function getFeaturedMoviesController()
 
     return $movies;
 }
+
+function searchMoviesController()
+{
+    $query = $_REQUEST['query'] ?? '';
+    error_log("QUERY: '$query'");
+    if (empty($query)) {
+        return [];
+    }
+    $movies = searchMovies($query);
+    if (empty($movies)) {
+        return ['message' => 'Aucun résultat'];
+    }
+
+    return $movies;
+}

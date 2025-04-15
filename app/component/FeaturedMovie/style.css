@@ -1,39 +1,35 @@
 .carousel {
     position: relative;
     height: 31.25rem;
-    width: 100%;
+    width: 90%;
+    border-radius: 1rem;
+    overflow: hidden;
     margin: 0 auto;
     font-family: var(--ff-sans);
 }
 
 .carousel__track-container {
-    background: var(--color-dark);
-    height: 100%;
     position: relative;
+    height: 100%;
     overflow: hidden;
 }
 
 .carousel__track {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    position: relative;
-    height: 100%;
-    transition: transform 0.5s ease-in;
     display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
 }
 
 .featured__item {
-    min-width: 100%;
-    height: 500px;
     position: relative;
+    min-width: 100%;
+    height: 100%;
 }
 
 .featured__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
 }
 
 .featured__overlay {
@@ -62,17 +58,27 @@
 .carousel__button {
     position: absolute;
     top: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transform: translateY(-50%);
     background: var(--color-purple);
-    border: 0;
+    border: none;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+
+.carousel__button--left {
+    left: 1rem;
+}
+
+.carousel__button--right {
+    right: 1rem;
 }
 
 .carousel__button:hover {
@@ -80,16 +86,6 @@
 }
 
 
-
-.carousel__button--left {
-    left: 1rem;
-    color: var(--color-white);
-}
-
-.carousel__button--right {
-    right: 1rem;
-    color: var(--color-white);
-}
 
 .featured__btn {
     background: var(--color-purple);
@@ -108,4 +104,15 @@
 .featured__btn:hover {
     background: var(--color-purple-dark);
 }
+
+
+
+
+
+
+
+
+
+
+
 

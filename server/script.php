@@ -30,6 +30,8 @@ require 'controller.php';
  * via une requête HTTP.
  * Si ce paramètre est présent, le code à l'intérieur du bloc conditionnel sera exécuté.
  */
+// error_log('TODO: '.($_REQUEST['todo'] ?? 'NON DEFINI'));
+
 if (isset($_REQUEST['todo'])) {
     /*
      * La fonction PHP header permet de définir l'en-tête HTTP de la réponse.
@@ -103,6 +105,10 @@ if (isset($_REQUEST['todo'])) {
 
         case 'getfeatured':
             $data = getFeaturedMoviesController();
+            break;
+
+        case 'search':
+            $data = searchMoviesController();
             break;
 
         default:

@@ -22,7 +22,7 @@
     gap: 1.5rem;
   }
   
-  /* Quand un seul élément sur toute la ligne */
+  /* Quand y'a un seul élément sur toute la ligne */
   .form__group--full {
     grid-template-columns: 1fr;
   }
@@ -74,13 +74,12 @@
     color: var(--clr-black);
   }
   
-  /* Bouton */
   .movie__button {
     width: 100%;
     padding: 1rem;
     border: none;
     border-radius: 0.4rem;
-    font-family: var(--ff-nunito);
+    font-family: var(--ff-sans);
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
