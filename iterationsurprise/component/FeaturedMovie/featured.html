@@ -1,0 +1,13 @@
+<article class="featured__item" data-movie-id="{{id}}">
+    <img src="../server/images/{{image}}" alt="{{title}}" class="featured__image">
+    <button onclick="event.stopPropagation(); C.handleFavorite({{id}})" class="card__favorite {{favorite-class}}">
+        <i class="fa-heart {{heartType}}"></i>
+    </button>
+    <div class="featured__overlay">
+        <h3 class="featured__title">{{title}}</h3>
+        <p class="featured__description">{{description}}</p>
+        <button class="featured__btn button" onclick="C.handlerDetail({{id}})">
+            <i class="fas fa-play"></i> Voir le film
+        </button>
+    </div>
+</article>

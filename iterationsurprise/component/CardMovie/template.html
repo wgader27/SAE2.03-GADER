@@ -1,0 +1,13 @@
+<figure class="card font-sans flex-column" onclick="C.handlerDetail({{handler}})" data-movie-id="{{id}}">
+    <div class="card__image">
+        <img class="w-100 h-100" src="../server/images/{{img}}" alt="{{alt}}">
+        <button onclick="event.stopPropagation(); C.handleFavorite({{id}})" class="card__favorite">
+            <i class="fa-heart {{heartType}}"></i>
+        </button>
+        {{#if isInBookmarkPage}}
+        <button onclick="event.stopPropagation(); C.handleRemoveBookmark({{id}})" class="card__remove-favorite">
+            <i class="fas fa-times"></i>
+        </button>
+        {{/if}}
+    </div>
+</figure>
