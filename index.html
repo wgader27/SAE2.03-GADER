@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portail Canal Galaxy</title>
+  <style>
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 8, 5, 0.7);
+      z-index: 1;
+    }
+
+    .blink-light {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+      animation: blink 1.6s infinite alternate;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    @keyframes blink {
+      0%   { opacity: 0.2; }
+      100% { opacity: 0.4; }
+    }
+
+    .menu {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 2rem;
+    }
+
+    .menu__link {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      font-size: 1.5rem;
+      border: 0.1rem solid white;
+      border-radius: 0.8rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(0.5rem);
+    }
+
+    .menu__link:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+      box-shadow: 0 0 1rem white;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+    <div class="blink-light"></div>
+
+
+  <nav class="menu">
+    <a href="admin/index.html" class="menu__link">Admin</a>
+    <a href="adminsurprise/index.html" class="menu__link">Admin surprise</a>
+    <a href="app/index.html" class="menu__link">App</a>
+    <a href="iterationsurprise/index.html" class="menu__link">Itération surprise</a>
+    <a href="rapport.html" class="menu__link">Go access</a>
+  </nav>
+</body>
+</html>

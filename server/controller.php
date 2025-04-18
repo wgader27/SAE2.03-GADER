@@ -54,7 +54,7 @@ function readCategoriesController()
 function readMovieByCategoryController()
 {
     $category = $_REQUEST['category'];
-    $userAge = isset($_REQUEST['userAge']) ? intval($_REQUEST['userAge']) : 99; // 99 ans par défaut pour l'invité
+    $userAge = isset($_REQUEST['userAge']) ? intval($_REQUEST['userAge']) : 99;
 
     $movies = getMovieByCategory($category, $userAge);
 
@@ -63,7 +63,6 @@ function readMovieByCategoryController()
 
 function addMovieController()
 {
-    // Récupérez les paramètres
     $name = $_REQUEST['name'];
     $year = $_REQUEST['year'];
     $length = $_REQUEST['length'];
@@ -86,12 +85,10 @@ function addMovieController()
 
 function addUserController()
 {
-    // Récupérez les paramètres
     $name = $_REQUEST['name'];
     $image = $_REQUEST['image'];
     $birth = $_REQUEST['birth'];
 
-    // Appel de la fonction addUser
     $ok = addUser($name, $image, $birth);
     if ($ok != 0) {
         return "L'utilisateur $name a été ajouté";
@@ -143,10 +140,9 @@ function getBookmarksController()
 {
     $id_user = $_REQUEST['id_user'];
 
-    // Appel à DataProfil pour récupérer les favoris
     $bookmarks = getBookmarks($id_user);
 
-    // Si aucun favori n'est trouvé, retournez un message approprié
+    // Si aucun favori n'est trouvé, on retourne ce message
     if (empty($bookmarks)) {
         return ['message' => 'Aucun film favori pour ce profil'];
     }
