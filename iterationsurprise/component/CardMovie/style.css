@@ -34,11 +34,6 @@
   user-select: none;
 }
 
-/* .card__content {
-  padding: 1rem;
-  background: linear-gradient(60deg, var(--color-purple), var(--color-purple-dark));
-} */
-
 .card__title {
   font-size: 1rem;
   text-align: center;

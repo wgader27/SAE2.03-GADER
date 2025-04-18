@@ -1,0 +1,57 @@
+@layer reset, variables, components, utilities;
+
+@import "./reset.css" layer(reset);
+@import "./variables.css" layer(variables);
+@import "./utilities.css" layer(utilities);
+
+@import "../component/Log/style.css" layer(components);
+@import "../component/AddMovie/style.css" layer(components);
+@import "../component/AddUser/style.css" layer(components);
+@import "../component/UpdateUser/style.css" layer(components);
+
+
+
+
+.container {
+  font-family: var(--ff-primary);
+  background-color: var(--color-bg);
+  padding: 0rem 2rem;
+  gap: 2rem;
+}
+
+#form {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  font-family: var(--ff-nunito);
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-family: var(--ff-canal);
+  text-transform: uppercase;
+  border-radius: 0.2rem;
+  border: none;
+  background: var(--color-primary-dark);
+  color: var(--color-fg);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: var(--color-primary) !important;
+}
+
+.button--secondary {
+  background: var(--color-secondary);
+  color: var(--color-fg);
+}

@@ -76,14 +76,14 @@ function getMovieByCategory($category, $userAge)
     return $res;
 }
 
-function addMovie($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age)
+function addMovie($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age, $featured)
 {
-    if (empty($name) || empty($year) || empty($length) || empty($description) || empty($director) || empty($id_category) || empty($image) || empty($trailer) || empty($min_age)) {
+    if (empty($name) || empty($year) || empty($length) || empty($description) || empty($director) || empty($id_category) || empty($image) || empty($trailer) || empty($min_age) || empty($featured)) {
         return false;
     }
     $cnx = new PDO('mysql:host='.HOST.';dbname='.DBNAME, DBLOGIN, DBPWD);
-    $sql = 'INSERT INTO Movie (name,year,length,description,director,id_category,image,trailer,min_age) 
-            VALUES (:name,:year,:length,:description,:director,:id_category,:image,:trailer,:min_age)';
+    $sql = 'INSERT INTO Movie (name,year,length,description,director,id_category,image,trailer,min_age,featured) 
+            VALUES (:name,:year,:length,:description,:director,:id_category,:image,:trailer,:min_age, :featured)';
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':year', $year);
@@ -94,6 +94,7 @@ function addMovie($name, $year, $length, $description, $director, $id_category, 
     $stmt->bindParam(':trailer', $trailer);
     $stmt->bindParam(':min_age', $min_age);
     $stmt->bindParam(':director', $director);
+    $stmt->bindParam(':featured', $featured);
     $stmt->execute();
     $res = $stmt->rowCount();
 

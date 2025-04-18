@@ -29,7 +29,6 @@ CardMovie.format = async function(obj, isInBookmarkPage = false) {
       html = html.replace("{{#if isInBookmarkPage}}", "");
       html = html.replace("{{/if}}", "");
   } else {
-      // Supprime le bloc entier de la croix si pas dans la page favoris
       html = html.replace(/{{#if isInBookmarkPage}}[\s\S]*?{{\/if}}/g, "");
   }
 
@@ -39,7 +38,6 @@ CardMovie.format = async function(obj, isInBookmarkPage = false) {
   return html;
 }
 
-// Modification de formatMany pour prendre en compte le contexte
 CardMovie.formatMany = async function(movies, isInBookmarkPage = false) {
   let html = "";
   if (!Array.isArray(movies)) return html;
@@ -49,12 +47,5 @@ CardMovie.formatMany = async function(movies, isInBookmarkPage = false) {
   return html;
 }
 
-CardMovie.formatMany = async function(movies, isInBookmarkPage = false) {
-  let html = "";
-  for(const movie of movies) {
-      html += await CardMovie.format(movie, isInBookmarkPage);
-  }
-  return html;
-}
 
 export { CardMovie };

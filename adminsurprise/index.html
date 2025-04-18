@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>SAE2.03 ADMIN</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/polipop/dist/css/polipop.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/polipop/dist/css/polipop.default.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/polipop/dist/js/polipop.min.js"></script>
+</head>
+
+<body>
+  <div class="container flex-column flex-start">
+    <section id="log"></section>
+    <section id="form"></section>
+  </div>
+
+  <script type="module">
+    import { Log } from "./component/Log/script.js";
+    import { AddMovie } from "./component/AddMovie/script.js";
+    import { AddUser } from "./component/AddUser/script.js";
+    import { UpdateUser } from "./component/UpdateUser/script.js";
+    import { DataMovie } from "./data/dataMovie.js";
+    import { DataProfil } from "./data/dataProfil.js";
+
+    window.C = {};
+
+    C.handlerAdd = async function () {
+      let form = document.querySelector('.addMovie__form');
+      let fd = new FormData(form);
+      let res = await DataMovie.addMovie(fd);
+      V.renderLog(res);
+    }
+
+    C.handlerAddUser = async function () {
+      let form = document.querySelector('.addUser__form');
+      let fd = new FormData(form);
+      let res = await DataProfil.addUser(fd);
+      V.renderLog(res);
+    }
+
+
+    C.handleUserChange = async function (userId) {
+      if (!userId) return;
+      let user = await DataProfil.getUserById(userId);
+      if (user) {
+        let form = document.querySelector('.updateUser__form');
+        form.querySelector('#name').value = user.name;
+        form.querySelector('#birth').value = user.birth;
+        form.querySelector('#image').value = user.image || '';
+      }
+    }
+
+    C.handlerUpdateUser = async function () {
+      let form = document.querySelector('.updateUser__form');
+      let fd = new FormData(form);
+      let res = await DataProfil.updateUser(fd);
+      V.renderLog(res);
+    }
+
+    C.getMovieByCategories = async function () {
+      let categories = await DataMovie.requestCategory();
+      let html = await MovieCategory.formatMany(categories);
+      V.renderMovieByCategories(html);
+    }
+
+    C.start = function () {
+      V.renderLog("Démarrage de l'application");
+      V.renderNewMovie("C.handlerAdd()");
+      V.renderNewUser("C.handlerAddUser()");
+      V.renderUpdateUser("C.handlerUpdateUser()");
+    };
+
+    window.V = {};
+
+    V.renderNewMovie = function (handler) {
+      let content = document.querySelector('#form');
+      content.innerHTML = AddMovie.format(handler);
+    }
+
+    V.renderNewUser = function (handler) {
+      let content = document.querySelector('#form');
+      content.innerHTML += AddUser.format(handler);
+    }
+
+    V.renderUpdateUser = async function (handler) {
+      let content = document.querySelector('#form');
+      let html = await UpdateUser.formatMany(handler);
+      content.innerHTML += html;
+    }
+
+    V.renderLog = function (txt) {
+      let content = document.querySelector("#log");
+      content.innerHTML = Log.format(txt);
+    };
+
+    C.start();
+  </script>
+</body>
+
+</html>

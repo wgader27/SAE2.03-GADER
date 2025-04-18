@@ -8,3 +8,4 @@ SearchBar.render = function() {
 }
 
 export { SearchBar };
+

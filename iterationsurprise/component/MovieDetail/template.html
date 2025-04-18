@@ -1,31 +1,34 @@
 <figure class="detail font-sans">
-    <div class="detail__video">
-      <iframe 
-        class="detail__video-frame"
-        width="100%" 
-        height="400" 
-        src="{{trailer}}" 
-        title="YouTube video player" 
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  
-    <div class="detail__container flex">
-      <img class="detail__poster" src="../server/images/{{img}}" alt="{{alt}}">
-  
-      <figcaption class="detail__infos">
-        <h2 class="detail__title">{{title}}</h2>
+  <div class="detail__container" style="--bg-image: url('../../../server/images/{{img}}');">
+    <figcaption class="detail__infos flex-row">
+      <div class="detail__infos--left">
+        <h2 class="detail__title font-canal">{{title}}</h2>
         <div class="detail__meta">
-          <span class="detail__genre"><i class="fa-solid fa-list" style="color:var(--color-primary)"></i> {{category}}</span>
-          <span class="detail__duration"><i class="fa-regular fa-clock" style="color:var(--color-primary)"></i> {{duration}}</span>
-          <span class="detail__year"><i class="fa-regular fa-calendar" style="color:var(--color-primary)"></i> {{year}}</span>
-          <span class="detail__views">{{min_age}} <i class="fa-regular fa-eye" style="color:var(--color-primary)"></i></span>
+          <p>{{category}}</p>
+          <p>{{duration}}</p>
+          <p>{{year}}</p>
         </div>
+        <button class="detail__button button">
+          <i class="fa-solid fa-play"></i> Lecture
+        </button>
+      </div>
+      <div class="detail__infos--right">
         <p class="detail__description">{{description}}</p>
-        <p class="detail__director"><strong>Directeur</strong> : {{director}}</p>
-      </figcaption>
+        <p><strong>De :</strong> {{director}}</p>
+        <p><strong>Age :</strong> {{min_age}}</p>
+        <button class="detail__button button button--secondary">Plus d'infos</button>
+      </div>
+    </figcaption>
+  </div>
+  <div class="detail__video">
+    <div class="detail__menus">
+      <h2 class="detail__menu">BANDE ANNONCE</h2>
+      <h2 class="detail__menu">BONUS</h2>
+      <h2 class="detail__menu">A VOIR AUSSI</h2>
+      <h2 class="detail__menu">ACHETER</h2>
+      <h2 class="detail__menu">PLUS D'INFOS</h2>
+
     </div>
+    <iframe class="detail__video-frame" src="{{trailer}}" title="YouTube video player" allowfullscreen></iframe>
+  </div>
 </figure>
-  

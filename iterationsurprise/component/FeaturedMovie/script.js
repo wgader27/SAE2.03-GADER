@@ -1,8 +1,12 @@
 import { DataProfil } from '../../data/dataProfil.js';
-import { NoResultCard } from '../NoResultCard/script.js'; // Ajoute cette ligne
+import { NoResultCard } from '../NoResultCard/script.js'; 
 
-const template = await (await fetch('./component/FeaturedMovie/template.html')).text();
-const template2 = await (await fetch('./component/FeaturedMovie/featured.html')).text();
+let templateFile = await fetch('./component/FeaturedMovie/template.html');
+let template = await templateFile.text();
+
+let templateFile2 = await fetch('./component/FeaturedMovie/featured.html');
+let template2 = await templateFile2.text();
+
 
 let FeaturedMovie = {};
 
@@ -31,7 +35,7 @@ FeaturedMovie.format = async function(movies) {
     for (const movie of movies) {
         moviesHTML += await FeaturedMovie.formatOne(movie);
     }
-    return template.replace('{{movies}}', moviesHTML);
+    return html.replace('{{movies}}', moviesHTML);
 };
 
 export { FeaturedMovie };

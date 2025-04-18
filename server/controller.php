@@ -73,9 +73,9 @@ function addMovieController()
     $image = $_REQUEST['image'];
     $trailer = $_REQUEST['trailer'];
     $min_age = $_REQUEST['min_age'];
+    $featured = $_REQUEST['featured'];
 
-    // Appel de la fonction addMovie
-    $ok = addMovie($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age);
+    $ok = addMovie($name, $year, $length, $description, $director, $id_category, $image, $trailer, $min_age, $featured);
 
     if ($ok != 0) {
         return "Le film $name a été ajouté";

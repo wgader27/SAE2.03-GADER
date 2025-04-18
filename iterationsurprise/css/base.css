@@ -9,21 +9,46 @@
 @import "../component/MovieDetail/style.css" layer(components);
 @import "../component/MovieCategory/style.css" layer(components);
 @import "../component/NoResultCard/style.css" layer(components);
-@import "../component/BookmarkResult/style.css" layer(components); 
-@import "../component/FeaturedMovie/style.css" layer(components);  
+@import "../component/BookmarkResult/style.css" layer(components);
+@import "../component/FeaturedMovie/style.css" layer(components);
 @import "../component/SearchBar/style.css" layer(components);
 @import "../component/TvCard/style.css" layer(components);
+@import "../component/Feature/style.css" layer(components);
+@import "../component/Footer/style.css" layer(components);
 
 
-
-
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: var(--color-bg);
 }
 
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-family: var(--ff-canal);
+    text-transform: uppercase;
+    border-radius: 0.2rem;
+    border: none;
+    background: var(--color-primary-dark);
+    color: var(--color-fg);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
 
+.button:hover {
+    background: var(--color-primary) !important;
+}
+
+.button--secondary {
+    background: var(--color-secondary);
+    color: var(--color-fg);
+}
 
 .toast-message {
     font-family: var(--ff-sans) !important;
@@ -42,16 +67,13 @@ body{
 
 .toastify {
     background-color: var(--color-primary) !important;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Style de la barre de progression */
 .toastify .toastify-progress {
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.5)
-    ) !important;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.5)) !important;
     position: absolute !important;
     bottom: 0 !important;
     left: 0 !important;
@@ -59,7 +81,6 @@ body{
     width: 100% !important;
 }
 
-/* Style du bouton de fermeture */
 .toast-close {
     opacity: 0.7 !important;
     padding: 0 !important;
